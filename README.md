@@ -1,7 +1,7 @@
 # crawler-protect
-A few lines of code to limit the extraction of your emails and other sensitive strings from your website by crawlers.
+A TagHelper to hide sensitive contents (like email addresses) in order to keep them from being accessed by malicious bots.
 
-Inpired from https://developers.cloudflare.com/support/more-dashboard-apps/cloudflare-scrape-shield/what-is-email-address-obfuscation/
+Inpired from [cloudflare email address obfuscation](https://developers.cloudflare.com/support/more-dashboard-apps/cloudflare-scrape-shield/what-is-email-address-obfuscation/)
 
 ## Example :
 the razor : 
@@ -22,6 +22,28 @@ and JS translate to :
     <p><a class="protected-lnk" href="mailto:test@example.com">test@example.com</a></p>
     <p><a href="mailto:test@example.com" class="protected-lnk">test@example.com</a></p>
 ```
+
+## Usage
+Tag : `<protected placeholder="String" href="/path" class="class-used-by-js">Content to protect</protected>`
+Attributs :
+- placeholder : (Optional) String placed in place of the content to be encoded. Default : "[Protected]"; 
+- href : (Optional) Path to an explanation page. Default: Empty.
+Other attributes are kept unchanged.
+
+## Explanation page example
+```
+Sensitive content protection
+
+You are unable to access this information.
+Sensitive contents (like email addresses) on that page have been hidden in order to keep them from being accessed by malicious bots.
+You must enable Javascript in your browser in order to decode this content.
+```
+
+## Setup
+1. Create `ProtectedTagHelper` on your project (copy from file in this repository) and ajust the namespace;
+2. Add `@addTagHelper TestApp.TagHelpers.ProtectedTagHelper, TestApp` in `_ViewImports.cshtml` (don't forget to adjust the namespace);
+3. Add and import the `decode.js` to your protect;
+4. You can use the helper.
 
 ## Disclaimer
 This feature is obfuctation not encryption. It is not intended to protect data from hackers, just to prevent emails and datas from being captured by automatic crawlers.
