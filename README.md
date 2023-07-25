@@ -1,7 +1,7 @@
 # crawler-protect
 A TagHelper to hide sensitive contents (like email addresses) in order to keep them from being accessed by malicious bots.
 
-Inpired from [cloudflare email address obfuscation](https://developers.cloudflare.com/support/more-dashboard-apps/cloudflare-scrape-shield/what-is-email-address-obfuscation/)
+Inspired from [cloudflare email address obfuscation](https://developers.cloudflare.com/support/more-dashboard-apps/cloudflare-scrape-shield/what-is-email-address-obfuscation/)
 
 ## Example :
 the razor : 
